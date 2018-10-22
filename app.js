@@ -33,3 +33,22 @@ new BusMallItem('Unicorn Meat', 'img/unicorn.jpg');
 new BusMallItem('Tentacle USB Drive', 'img/usb.gif');
 new BusMallItem('Extremely Helpful Watering Can', 'img/water-can.jpg');
 new BusMallItem('Extremely Easy to Drink From Wine Glass', 'img/wine-glass.jpg');
+
+
+// Get the <img> element from the DOM
+var itemImage = document.getElementById('busmall-items');
+
+// Write a function to randomly display one of the images
+function randomItem() {
+  // Select a random item from the array
+  var idx = Math.floor(Math.random() * allBusMallItems.length);
+  console.log(allBusMallItems[idx]);
+  // Assign the src, alt, and title attributes to the <img> element
+  itemImage.src = allBusMallItems[idx].filepath;
+  itemImage.alt = allBusMallItems[idx].name;
+  itemImage.title = allBusMallItems[idx].name;
+  // Console log which item is showing
+  console.log(`${allBusMallItems[idx].name} is showing`);
+}
+
+randomItem();
