@@ -40,46 +40,26 @@ var itemImage1 = document.getElementById('busmall-item-1');
 var itemImage2 = document.getElementById('busmall-item-2');
 var itemImage3 = document.getElementById('busmall-item-3');
 
+//Refactor
 
-// Write a function to randomly display 1st image
-function randomItem1() {
+function randomItem(item) {
   // Select a random item from the array
   var idx = Math.floor(Math.random() * allBusMallItems.length);
   console.log(allBusMallItems[idx]);
   // Assign the src, alt, and title attributes to the <img> element
-  itemImage1.src = allBusMallItems[idx].filepath;
-  itemImage1.alt = allBusMallItems[idx].name;
-  itemImage1.title = allBusMallItems[idx].name;
+  item.src = allBusMallItems[idx].filepath;
+  item.alt = allBusMallItems[idx].name;
+  item.title = allBusMallItems[idx].name;
   // Console log which item is showing
   console.log(`${allBusMallItems[idx].name} is showing`);
 }
 
-// Write a function to randomly display 2nd image
-function randomItem2() {
-  // Select a random item from the array
-  var idx = Math.floor(Math.random() * allBusMallItems.length);
-  console.log(allBusMallItems[idx]);
-  // Assign the src, alt, and title attributes to the <img> element
-  itemImage2.src = allBusMallItems[idx].filepath;
-  itemImage2.alt = allBusMallItems[idx].name;
-  itemImage2.title = allBusMallItems[idx].name;
-  // Console log which item is showing
-  console.log(`${allBusMallItems[idx].name} is showing`);
-}
+randomItem(itemImage1);
+randomItem(itemImage2);
+randomItem(itemImage3);
 
-// Write a function to randomly display 3rd image
-function randomItem3() {
-  // Select a random item from the array
-  var idx = Math.floor(Math.random() * allBusMallItems.length);
-  console.log(allBusMallItems[idx]);
-  // Assign the src, alt, and title attributes to the <img> element
-  itemImage3.src = allBusMallItems[idx].filepath;
-  itemImage3.alt = allBusMallItems[idx].name;
-  itemImage3.title = allBusMallItems[idx].name;
-  // Console log which item is showing
-  console.log(`${allBusMallItems[idx].name} is showing`);
-}
+//create an array for the selected images. This holds the info of the last images put on the screen. Before putting a new one on the screen check if the image has already been used.
 
-randomItem1();
-randomItem2();
-randomItem3();
+//create variable for last displayed, or something similar
+//could use the .includes method.
+
