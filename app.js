@@ -66,23 +66,27 @@ function makeThreeUnique() {
   }
   // pushes to first num
   output.push(firstNum);
+
   // need to generate second element
-  // NEED TO UPDATE TO THESE TO REFLECT THE DUPLICATE STUFF FROM ABOVE
-  output.push(makeRandom());
+  var secondNum = makeRandom();
   // if it matches 1st, 
-  while (output[0] === output [1]){
+  while (output[0] === secondNum|| justViewed.includes(secondNum)){
     console.log('duplicate detected on second');
     // reroll
-    output[1] = makeRandom();
+    secondNum = makeRandom();
   }
+  output.push(secondNum);
+
   // generate 3rd number
-  output.push(makeRandom());
+  var thirdNum = makeRandom();
   // if it matches... 
-  while (output[0] === output[2] || output[1] === output[2]){
+  while (output[0] === thirdNum || output[1] === thirdNum || justViewed.includes(thirdNum)){
     console.log('duplicate detected on third');
     // reroll
-    output[2] = makeRandom();
+    thirdNum = makeRandom();
   }
+  output.push(thirdNum);
+  
   justViewed = output;
   return output;
 }
@@ -102,7 +106,7 @@ function displayPics() {
   center.alt = allProducts[idx[1]].name;
   right.alt = allProducts[idx[2]].name;
   left.title = allProducts[idx[0]].name;
-  center.titl = allProducts[idx[1]].name;
+  center.title = allProducts[idx[1]].name;
   right.title = allProducts[idx[2]].name;
 }
 
@@ -120,7 +124,7 @@ function handleClick(event) {
     }
   }
   //handle total number of votes allowed
-  if (totalClicks === 3) {
+  if (totalClicks === 25) {
     container.removeEventListener('click', handleClick);
     return showList(); //this return statement will kick us out of the loop
   }
