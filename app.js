@@ -3,6 +3,9 @@
 // Array to store the items
 var allBusMallItems = [];
 
+//Array for displayed pictures
+var itemsDisplayedLast = [];
+
 // Make a constructor function
 function BusMallItem(name, filepath){
   this.name = name;
@@ -58,8 +61,34 @@ randomItem(itemImage1);
 randomItem(itemImage2);
 randomItem(itemImage3);
 
-//create an array for the selected images. This holds the info of the last images put on the screen. Before putting a new one on the screen check if the image has already been used.
+function handleClick(event) {
+  console.log(event.target);
+  randomItem(itemImage1);
+  randomItem(itemImage2);
+  randomItem(itemImage3);
+}
+
+// Listen for clicks on the images and then display a new set of images
+itemImage1.addEventListener('click', handleClick);
+itemImage2.addEventListener('click', handleClick);
+itemImage3.addEventListener('click', handleClick);
+
+//push current display to an array (itemsDisplayedLast)
+//create while loop to handle if item was in last spread of 3 images
+//
+
+//while loop to handle if item was in last spread of 3 images
+  // while(itemsDisplayedLast.includes(idx)) {
+  //   idx = Math.floor(Math.random() * allBusMallItems.length);
+  //   console.log('Found duplicate');
+  // }
+
+  // itemsDisplayedLast.push(idx);
+
+
+//create an array for the selected images (itemDisplayedLast). This holds the info of the last images put on the screen. Before putting a new one on the screen check if the image has already been used.
+
+//create if/else statement to handle whether or not an image was just shown.
 
 //create variable for last displayed, or something similar
 //could use the .includes method.
-
