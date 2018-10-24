@@ -43,9 +43,21 @@ function Product(name) {
 // INSTANCES
 //++++++++++++++++++++++++++++++
 
-for (var i = 0; i < names.length; i++) {
-  new Product(names[i]);
+//add if/else statement for local storage
+window.onload = function(){
+  if (localStorage.allProductsStorage){
+    console.log('did it work');
+    allProducts = JSON.parse(localStorage.getItem('allProductsStorage'));
+    // displayPics()
+    renderChart();
+  } else {
+    for (var i = 0; i < names.length; i++) {
+      new Product(names[i]);
+    }
+    displayPics();
+  }
 }
+
 
 //++++++++++++++++++++++++++++++
 // FUNCTION DECLARATIONS
@@ -61,6 +73,8 @@ function makeRandom() {
 function makeThreeUnique() {
   console.log(justViewed, 'just viewed in line 59');
   var output = [];
+  console.log(output);
+
   // makes first element
   var firstNum = makeRandom();
   // handles duplicates from last set of 3
@@ -129,6 +143,8 @@ function handleClick(event) {
   //handle total number of votes allowed
   if (totalClicks === 25) {
     container.removeEventListener('click', handleClick);
+    localStorage.setItem('allProductsStorage', JSON.stringify(allProducts)); // sets up local storage for all products
+    console.log('Added to local storage')
     return renderChart(); //this return statement will kick us out of the loop
   }
   displayPics();
@@ -144,15 +160,16 @@ function showList() {
 }
 
 function getVotes() {
-  for (i = 0; i < allProducts.length; i++) {
-    votingData.push(allProducts[i].votes);
+  for (var i = 0; i < allProducts.length; i++) {
+    votingData[i] = allProducts[i].votes;
   }
 }
+
 
 //++++++++++++++++++++++++++++++
 // CODE THAT EXECUTES ON PAGE LOAD
 //++++++++++++++++++++++++++++++
-displayPics();
+
 container.addEventListener('click', handleClick);
 
 //++++++++++++++++++++++++++++++
@@ -163,6 +180,9 @@ container.addEventListener('click', handleClick);
 var ctx = document.getElementById('voting-results').getContext('2d');
 function renderChart() {
   getVotes();
+  console.log(names)
+  console.log(votingData)
+  console.log('last reached line');
   new Chart(ctx, {
     type: 'horizontalBar',
     data: {
@@ -179,4 +199,5 @@ function renderChart() {
       responsive: false
     }
   });
+  console.log('last line');
 }
