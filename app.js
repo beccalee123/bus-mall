@@ -48,7 +48,8 @@ window.onload = function(){
   if (localStorage.allProductsStorage){
     console.log('did it work');
     allProducts = JSON.parse(localStorage.getItem('allProductsStorage'));
-    // displayPics()
+    displayPics()
+    container.removeEventListener('click', handleClick);
     renderChart();
   } else {
     for (var i = 0; i < names.length; i++) {
