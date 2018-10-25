@@ -191,7 +191,7 @@ function renderChart() {
       datasets: [{
         label: "Vote Results",
         data: votingData,
-        backgroundColor: 'rgb(63, 191, 161)',
+        backgroundColor: 'rgb(32, 178, 170)',
         borderColor: 'rgb(0, 0, 0)',
         borderWidth: 1,
       }]
